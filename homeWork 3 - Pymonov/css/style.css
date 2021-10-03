@@ -20,10 +20,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-body {
-background-color:darkgray;
-}
-
 h1 {
  text-align: center;
 }
