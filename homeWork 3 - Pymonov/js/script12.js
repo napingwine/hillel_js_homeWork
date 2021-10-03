@@ -45,7 +45,7 @@ function createTable() {
   }
 
   if (currentCurrency === 0 ||  currentTablerStopValue === 0) {
-    alert('Поля c * обязательны к заполнению')
+    alert('Поля c * обязательны к заполнению и не должны содержать 0')
   } else {
     append2colums('currency-body',`Доллар`,`Гривна`)
     for (currentTablerStartValue; currentTablerStopValue >= currentTablerStartValue; (currentTablerStartValue = currentTablerStartValue + currentTablerStep)) {
