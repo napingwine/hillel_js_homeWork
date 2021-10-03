@@ -1,9 +1,11 @@
 td {
   border: black 1px solid;
 }
-table {
+
+.table {
   border-spacing: 0;
   border: 1px black solid;
+  border-spacing: 0;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -16,4 +18,31 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+body {
+background-color:darkgray;
+}
+
+h1 {
+ text-align: center;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+.outer-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.inner-wrapper{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#calculate_table {
+  margin-left: 20px;
 }
