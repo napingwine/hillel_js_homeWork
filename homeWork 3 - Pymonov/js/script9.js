@@ -3,7 +3,7 @@ let numberOfDivisors = 0;
 let sumOfEvenDivisors = 0;
 document.write(`1) All divisors of number ${number}: `);
 for (let i = 1; i <= number; i++) {
-  if (number % i == 0) {
+  if (number % i === 0) {
     document.write(i + ((i < (number - 1)) ? ', ' : '.'));
     numberOfDivisors++
     sumOfEvenDivisors = sumOfEvenDivisors + i
