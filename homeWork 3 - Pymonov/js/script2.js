@@ -8,3 +8,4 @@ for(let i = 10; i<number; i++){
   squareNumber = i*i;
   document.write(squareNumber + ((i < dotPlace) ? ', ' : '.'));
 }
+//

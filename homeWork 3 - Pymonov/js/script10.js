@@ -9,3 +9,4 @@ for (let i = 1; i < endNumber; i++) {
     document.write(`${j} * ${i} = ${result} <br />`);
   }
 }
+//

@@ -4,3 +4,4 @@ for(let i = 1; i<=10; i++){
   result = i*inputNumber;
   document.write(`${i} * ${inputNumber} = ${result} <br />`);
 }
+//

@@ -9,3 +9,4 @@ if (number === 0) {
     document.write(square < number ? (square + ', ') : '');
   }
 }
+//
