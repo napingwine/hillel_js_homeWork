@@ -7,4 +7,3 @@ for (let i = startNumber; i <= stopNumber; i++) {
   }
 }
 document.write(`The sum of only even numbers in the range ${startNumber} to ${stopNumber}: ` + result);
-//

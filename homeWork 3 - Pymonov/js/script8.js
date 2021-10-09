@@ -7,4 +7,3 @@ for (let i = startNumber; i <= endNumber; i++) {
     document.write(i + ((i < dotPlace) ? ', ' : '.'));
   }
 }
-//

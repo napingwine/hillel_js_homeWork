@@ -11,4 +11,3 @@ for (let i = 1; i <= number; i++) {
 }
 document.write(`<br/> 2) Number of even divisors of ${number}: ${numberOfDivisors}.`);
 document.write(`<br/> 3) Sum of even divisors of ${number}: ${sumOfEvenDivisors}.`);
-//
