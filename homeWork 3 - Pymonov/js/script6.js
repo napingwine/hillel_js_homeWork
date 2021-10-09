@@ -1,6 +1,6 @@
+let inputNumber = 500;
 let result = 0;
 let finalResult = 0;
-let inputNumber = 500;
 for (let i = 0; i <= inputNumber; i++) {
   result = result + i;
 }
