@@ -72,7 +72,7 @@ function returnBill(currentElement){
   let amountNumberField = document.querySelector('#product-amount').value
   let userEmail = document.querySelector('#user-email').value
   let total = currentElement.price * Number(amountNumberField)
-  let totalWithDiscount = total - (discount/100)
+  let totalWithDiscount = total - total*(discount/100)
   let answer;
   if(priceForDiscount < totalWithDiscount){
     answer = `Your Bill: ${totalWithDiscount} due to you bill without discount more than ${priceForDiscount}. All info send on ${userEmail}`
