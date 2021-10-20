@@ -1,3 +1,5 @@
+'use strict';
+
 const products = [
   {
     category: 'electronic',

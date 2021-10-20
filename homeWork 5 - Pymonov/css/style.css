@@ -9,6 +9,7 @@ body {
   flex-direction: column;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
 .cathegories {
@@ -115,6 +116,7 @@ strong {
 .popup__form * {
   margin-bottom: 15px;
 }
+
 .popup__form label{
   margin: 0;
 }
@@ -122,4 +124,80 @@ strong {
 .btn-container {
   display: flex;
   justify-content: space-between;
+  padding: 20px 0;
+}
+
+#busketBTN {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+#busketBTN img{
+  width: 100px;
+  height: 100px;
+}
+
+#numberOfItems {
+  position: relative;
+  bottom: 25px;
+  left: 75px;
+  background: red;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+}
+
+.basket {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+.basket__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+}
+
+.basket__content {
+  background: #fff;
+  max-width: 800px;
+  padding: 30px;
+  position: relative;
+}
+
+.basket__close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.basket__title {
+  font-size: 40;
+  margin-bottom: 1em;
+  border-bottom: 1px black solid;
+}
+
+.basket__position {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: black 1px solid;
+}
+
+.basket__position div {
+  padding: 10px;
 }
