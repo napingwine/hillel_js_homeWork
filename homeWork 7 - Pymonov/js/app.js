@@ -11,7 +11,6 @@ const userCar = new Car(brand, productionYear, horsePower, color, bodyType);
 addOwnerIfAgeIsSufficient(userCar, user);
 let userInfo = user.introduceMyself();
 
-console.log(userInfo)
 console.log(user)
 console.log(userCar)
 userCar.introduceMyself(userInfo)
