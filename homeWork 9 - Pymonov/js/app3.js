@@ -13,10 +13,3 @@ inputElement.addEventListener('keyup', () => {
   let numberOfDives = inputElement.value;
   createTable(numberOfDives);
 })
-
-function createTable(number) {
-  tableWrapper.innerHTML = '';
-  for (let i = 0; i < number; i++) {
-    tableWrapper.appendChild(createDiv(('box' + i), i+1, 'box'));
-  }
-}

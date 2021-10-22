@@ -1,10 +1,4 @@
+let imgArray = ['1.jpeg','2.jpeg','3.jpeg','4.jpeg','5.jpeg','6.jpeg','7.jpeg','8.jpeg','9.jpeg','10.jpeg']
 let path = './img/';
 
-function getRandomPicture(min, max, path) {
-  let randomNumber = Math.floor(Math.random() * (max - min) + min);
-  let img = document.createElement('img');
-  img.src = path + randomNumber + '.jpeg';
-  return img;
-}
-
-document.body.appendChild(getRandomPicture(1, 11, path));
+document.body.appendChild(getRandomPicture(1, imgArray, path));
