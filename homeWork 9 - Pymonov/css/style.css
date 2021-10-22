@@ -1,0 +1,43 @@
+body {
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+i {
+font-size: 50px;
+}
+
+.box {
+  width: calc((100vw - 67px) / 10);
+  height: calc((100vw - 67px) / 10);
+  background: lightblue;
+  margin: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+
+.tabler-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;
+  align-items: center;
+  margin: 10px;
+}
+
+.button-wrapper button{
+  margin: 5px;
+}
+
+.likes-value {
+  padding: 10px;
+  font-size: 20px;
+}
