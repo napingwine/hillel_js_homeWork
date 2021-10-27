@@ -1,70 +1,39 @@
 'use strict';
 
-document.write('<h1>Select a category:</h1>')
-document.write('<div class="cathegories" id="cathegories"></div>')
-document.write('<div class="products__container" id="products__container"></div>')
-document.write('<div id="busketBTN"><img src="http://simpleicon.com/wp-content/uploads/basket.png" alt="basket"><div id="numberOfItems"></div></div>')
-
-let cathegoriesContainer = document.getElementById("cathegories");
-let productsContainer = document.getElementById("products__container");
-let busketBtn = document.getElementById('busketBTN');
-
-let allCathegories = [];
-let selectedCathegoryproducts = [];
-let currentElement;
-let selectedProduct;
-let userName;
-let userProductAmount;
-let userEmail;
-let userPhoneNumber;
+let dataURL = './json/products.json';
 let discount = 20;
 let priceForDiscount = 15000;
-let basketProductsArray = [];
+let basketArrayOfProducts = [];
 
-getAllCathegories()
-showAllCathegories()
+document.body.appendChild(createHeader());
+let productResultContainer = createSelectedCategoryProductsContainer();
+document.body.appendChild(productResultContainer);
 
-// clean ProductCardsContainer and add new product cards
-function showProducts(element) {
-  element.addEventListener('click', () => {
-    selectedCathegoryproducts = [];//reset array before get new cathegory
-    getProductsBySelectedCathegory(element);
-    cleanContainer(productsContainer);
-    createProductCardsContainer(element);
+async function getResponce(url) {
+  let responce = await fetch(url);
+  let data = await responce.json();
+  let allCathegories = getArrayOfCategoriesFromData(data);
+
+  document.querySelector('#header-categories-container').addEventListener('mouseenter', event => {
+    document.querySelector('#header-categories-container').appendChild(createCategoriesPopup(allCathegories));
+    //event.target -> category element
+    event.target.addEventListener('click', event => {
+      cleanProductsContainer()
+      //event.target -> selected category from popup
+      let targetCategory = event.target.innerHTML;
+      let arrayWithproductsFromSelectedCategory = getProductsFromSelectedCategory(targetCategory, data);
+      productResultContainer.appendChild(createProductCardsInContainer(arrayWithproductsFromSelectedCategory, data, arrayWithproductsFromSelectedCategory));
+    })
   })
-};
+  document.querySelector('#header-categories-container').addEventListener('mouseleave', () => {
+    document.querySelector('#header-categories-container').lastChild.remove();
+  })
 
-// onClik of produck open pup up and get from user data
-function bySelectedProduct(element) {
-  element.addEventListener('click', () => {
-    let idOfCurrentElement = element.getAttribute('idOfProduct');
-    let popUp = createPopup(getElementByIDInDataBase(idOfCurrentElement, selectedCathegoryproducts));
-    cancelBTN('cancel','popup')
-
-    popUp.addEventListener('keyup', () => {
-      if (allFieldsCorectlyFilled(getElementByIDInDataBase(idOfCurrentElement, selectedCathegoryproducts))) {
-        document.getElementById('add-to-basket').disabled = false;
-      } else {
-        document.getElementById('add-to-basket').disabled = true;
-      }
-    })
-
-    document.getElementById('add-to-basket').addEventListener('click', () => {
-      let element = getElementByIDInDataBase(idOfCurrentElement, selectedCathegoryproducts)
-      let amountNumberField = document.querySelector('#product-amount').value;
-      const AmountOfSelectedProuct1 = new AmountOfSelectedProuct(element, amountNumberField)//create obj with amount and product object
-      AmountOfSelectedProuct1.product.count -= AmountOfSelectedProuct1.amount // subtract bought amount of product from database
-      basketProductsArray.push(AmountOfSelectedProuct1)// add element in array of basket
-      let popUpremove = document.querySelector('#popup');
-      popUpremove.remove();
-      amountOfProductsOnChange(idOfCurrentElement, AmountOfSelectedProuct1.product.count);
-      showNumberOfPositionsInBasket(basketProductsArray.length)
-    })
+  // open and close basket !!!!!!!!!!!!!create function on sumbit btn!!!!!!!!!!!!!!!!!!
+  document.querySelector('#header-basket-icon').addEventListener('click', () => {
+    document.body.appendChild(createBasketPopup(basketArrayOfProducts, discount, priceForDiscount));
+    cancelBtnFN('#cancel', '#basket');
   })
 }
 
-busketBtn.addEventListener('click', () => {
- let busket = createBasketPopup(basketProductsArray, discount, priceForDiscount);
- document.body.appendChild(busket)
- cancelBTN('cancel','basket')
-})
+getResponce(dataURL);

@@ -43,7 +43,7 @@ function createBasketPopup(basketArrayOfProducts, discount, priceForDiscount) {
 
   //btn container
   let btnContainer = document.createElement('div');
-  btnContainer.className = 'btn-container';
+  btnContainer.className = 'basket__btn-container';
 
   let cancelBtn = document.createElement('button');
   cancelBtn.setAttribute('id', 'cancel');

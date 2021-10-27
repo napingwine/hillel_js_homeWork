@@ -1,0 +1,70 @@
+.slider { 
+  position: relative;
+ justify-content: center;
+  display: flex;
+  background: gray;
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+  height: 500px;
+  width: 100% auto;
+}
+
+.show-prev-btn,
+.show-next-btn{
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+}
+
+.show-prev-btn,
+.show-next-btn {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.1s ease;
+}
+
+.show-next-btn:hover,
+.show-prev-btn:hover{
+  background: rgb(255, 255, 255);
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+.show-next-btn .arrow::before,
+.show-prev-btn .arrow::before {
+  content: "";
+  border-top: 2px black solid;
+  border-left: 2px black solid;
+  height: 10px;
+  width: 10px;
+  display: block;
+}
+
+.show-prev-btn .arrow::before {
+  transform: rotate(-45deg) translateY(50%) translateX(-20%);
+}
+
+.show-next-btn .arrow::before {
+  transform: rotate(135deg) translateY(-20%) translateX(50%);
+}
+
+.show-prev-btn{
+  left: 50px;
+}
+.show-next-btn {
+  right: 50px;
+}
+
+.disabled{
+  display: none;
+}

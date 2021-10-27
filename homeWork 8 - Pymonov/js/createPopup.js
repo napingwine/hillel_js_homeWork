@@ -25,19 +25,19 @@ function createPopup(productOject) {
   let productNameLable = createLable('product__name', 'Name:');
   popupForm.appendChild(productNameLable);
 
-  let productName =  createProductDiv(productOject, 'name');
+  let productName = createProductDiv(productOject, 'name');
   popupForm.appendChild(productName);
 
   let productPriceLable = createLable('product__name', 'Price');
   popupForm.appendChild(productPriceLable);
 
-  let productPrice =  createProductDiv(productOject, 'price');
+  let productPrice = createProductDiv(productOject, 'price');
   popupForm.appendChild(productPrice);
 
   let productAmountLable = createLable('product__name', 'Availeble amount:');
   popupForm.appendChild(productAmountLable);
 
-  let productAmount =  createProductDiv(productOject, 'count');
+  let productAmount = createProductDiv(productOject, 'count');
   popupForm.appendChild(productAmount);
 
   let userProductAmountLable = createLable('product-amount', 'Enter amount produt for order:');
@@ -56,14 +56,10 @@ function createPopup(productOject) {
 
   let submitBtn = document.createElement('button');
   submitBtn.setAttribute('id', 'add-to-basket');
-  submitBtn.disabled = true;
+  // submitBtn.disabled = true;
   submitBtn.innerHTML = 'add to basket';
   btnContainer.appendChild(submitBtn);
-
   popupForm.appendChild(btnContainer);
-
-  document.body.append(popup);
-
   return popup;
 }
 
@@ -82,7 +78,7 @@ function createProductDiv(productOject, objectproperty) {
   return div;
 }
 
-function createInput(type, name, id){
+function createInput(type, name, id) {
   let input = document.createElement('input');
   input.setAttribute('type', type);
   input.setAttribute('name', name);
