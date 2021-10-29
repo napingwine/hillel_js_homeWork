@@ -1,0 +1,25 @@
+*,
+::after,
+::before{
+  box-sizing: border-box;
+}
+
+body{
+  max-width: 1024px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.table__row__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid black;
+
+}
+
+.table__row__value-cell,
+.table__row__key-cell {
+  padding: 10px;
+  border:1px solid black
+}

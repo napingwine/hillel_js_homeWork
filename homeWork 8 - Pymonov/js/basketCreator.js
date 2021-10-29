@@ -1,6 +1,9 @@
 'use strict';
 
-function createBasketPopup(basketArrayOfProducts, discount, priceForDiscount) {
+function createBasketPopup(obj) {
+  let basketArrayOfProducts = obj.basketArrayOfProducts;
+  let discount = obj.discount;
+  let priceForDiscount = obj.priceForDiscount;
   let totalPriceOfBill = 0;
   let basket = document.createElement('div');
   basket.className = 'basket';
@@ -56,6 +59,9 @@ function createBasketPopup(basketArrayOfProducts, discount, priceForDiscount) {
   btnContainer.appendChild(submitBtn);
   basketContent.appendChild(btnContainer)
   
+  
+
+ 
   return basket
 }
 

@@ -1,6 +1,9 @@
 'use strict';
 
-function createPopup(productOject) {
+function createPopup(obj) {
+  let productObject = getProductFromSelectedCategory(obj);
+  obj.currentProductObject = productObject;
+
   let popup = document.createElement('div');
   popup.className = 'popup';
   popup.id = 'popup';
@@ -25,19 +28,19 @@ function createPopup(productOject) {
   let productNameLable = createLable('product__name', 'Name:');
   popupForm.appendChild(productNameLable);
 
-  let productName = createProductDiv(productOject, 'name');
+  let productName = createProductDiv(productObject, 'name');
   popupForm.appendChild(productName);
 
   let productPriceLable = createLable('product__name', 'Price');
   popupForm.appendChild(productPriceLable);
 
-  let productPrice = createProductDiv(productOject, 'price');
+  let productPrice = createProductDiv(productObject, 'price');
   popupForm.appendChild(productPrice);
 
   let productAmountLable = createLable('product__name', 'Availeble amount:');
   popupForm.appendChild(productAmountLable);
 
-  let productAmount = createProductDiv(productOject, 'count');
+  let productAmount = createProductDiv(productObject, 'count');
   popupForm.appendChild(productAmount);
 
   let userProductAmountLable = createLable('product-amount', 'Enter amount produt for order:');
@@ -54,11 +57,32 @@ function createPopup(productOject) {
   cancelBtn.innerHTML = 'cancel';
   btnContainer.appendChild(cancelBtn);
 
+  userProductAmount.addEventListener('keyup', () => {
+    if(userProductAmount.value < productObject.count){
+      submitBtn.disabled = false;
+    }else{
+      submitBtn.disabled = true;
+    }
+  })
+
+  cancelBtn.addEventListener('click', () => {
+    popup.remove();
+  })
+
   let submitBtn = document.createElement('button');
   submitBtn.setAttribute('id', 'add-to-basket');
-  // submitBtn.disabled = true;
+  submitBtn.disabled = true;
   submitBtn.innerHTML = 'add to basket';
   btnContainer.appendChild(submitBtn);
+
+  submitBtn.addEventListener('click', () => {
+    productObject.count -= userProductAmount.value;
+    document.querySelector(`#count${productObject.id}`).innerHTML -= userProductAmount.value;
+    let someProduct = new ProductAndAmountToBasket(obj,userProductAmount.value );
+    obj.basketArrayOfProducts.push(someProduct);
+    popup.remove();
+  });
+
   popupForm.appendChild(btnContainer);
   return popup;
 }
@@ -84,4 +108,19 @@ function createInput(type, name, id) {
   input.setAttribute('name', name);
   input.setAttribute('id', id);
   return input;
+}
+
+function getProductFromSelectedCategory(obj) {
+  let array = obj.productsFromSelectedCategory;
+  let idOfProduct = obj.idOfSelectedElement;
+  for (let i = 0; i < array.length; i++) {
+    if (parseInt(idOfProduct) === array[i].id) {
+      return array[i];
+    }
+  }
+}
+
+function ProductAndAmountToBasket(obj,amount){
+this.product = obj.currentProductObject;
+this.amount = amount;
 }

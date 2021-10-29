@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <form name="mainForm">
+    <p><input type="text" name="login" placeholder="Login" /></p>
+    <p><input type="password" name="password" placeholder="password" /></p>
+    <p><input type="date" name="dateOfBirth" placeholder="Date of Birth" /></p>
+    <p><input type="number" name="age" placeholder="Age" /></p>
+    <p><input type="email" name="email" placeholder="E-mail" /></p>
+ 
+    <p><label><input type="radio" name="gender" value="Male"/>Male</label></p>
+    <p><label><input type="radio" name="gender" value="Female"/>Female</label></p>
+ 
+    <p><label><input type="checkbox" name="languages" value="English" /> English </label></p>
+    <p><label><input type="checkbox" name="languages" value="Deutch" /> Deutch </label></p>
+    <p><label><input type="checkbox" name="languages" value="Russian" /> Russian </label></p>
+    <p><label><input type="checkbox" name="languages" value="Ukrainian" /> Ukrainian </label></p>
+ 
+    <p><input type="button" value="save" id="save-btn"/></p>
+ </form>
+ <div class="result-container"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
