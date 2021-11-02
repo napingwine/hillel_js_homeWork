@@ -57,17 +57,17 @@ function createPopup(obj) {
   cancelBtn.innerHTML = 'cancel';
   btnContainer.appendChild(cancelBtn);
 
-  userProductAmount.addEventListener('keyup', () => {
-    if(userProductAmount.value < productObject.count){
+  userProductAmount.addEventListener('keyup', ()=>{
+    if (userProductAmount.value <= productObject.count && userProductAmount.value > 0) {
       submitBtn.disabled = false;
-    }else{
+    } else {
       submitBtn.disabled = true;
     }
-  })
-
+  });
+ 
   cancelBtn.addEventListener('click', () => {
     popup.remove();
-  })
+  });
 
   let submitBtn = document.createElement('button');
   submitBtn.setAttribute('id', 'add-to-basket');
@@ -78,8 +78,12 @@ function createPopup(obj) {
   submitBtn.addEventListener('click', () => {
     productObject.count -= userProductAmount.value;
     document.querySelector(`#count${productObject.id}`).innerHTML -= userProductAmount.value;
-    let someProduct = new ProductAndAmountToBasket(obj,userProductAmount.value );
-    obj.basketArrayOfProducts.push(someProduct);
+    let someProduct = new ProductAndAmountToBasket(obj, userProductAmount.value);
+    if(userProductAmount.value > 0){
+      obj.basketArrayOfProducts.push(someProduct);
+      let basetProductst = JSON.stringify(obj.basketArrayOfProducts)
+      localStorage.setItem('basket', basetProductst);
+    }
     popup.remove();
   });
 
@@ -120,7 +124,7 @@ function getProductFromSelectedCategory(obj) {
   }
 }
 
-function ProductAndAmountToBasket(obj,amount){
-this.product = obj.currentProductObject;
-this.amount = amount;
+function ProductAndAmountToBasket(obj, amount) {
+  this.product = obj.currentProductObject;
+  this.amount = amount;
 }

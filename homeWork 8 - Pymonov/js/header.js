@@ -14,12 +14,21 @@ function header(obj) {
   headerCategoriesContainer.innerText = 'Categories';
   headerWrapper.appendChild(headerCategoriesContainer);
 
+  let userCabinet = document.createElement('div');
+  userCabinet.id = 'user-cabinet-icon';
+  userCabinet.className = 'fas fa-user';
+  userCabinet.fontSize = '40px';
+  headerWrapper.appendChild(userCabinet);
+  userCabinet.addEventListener('click', ()=>{
+    openUserCabinet(obj);
+  })
+
   let headerBasketIcon = document.createElement('div');
   headerBasketIcon.id = 'header-basket-icon';
   headerBasketIcon.className = 'fas fa-shopping-cart';
   headerBasketIcon.fontSize = '40px'
   headerWrapper.appendChild(headerBasketIcon)
-
+  
   //show pop up with categories on mouse enter
   headerCategoriesContainer.addEventListener('mouseenter', () => {
     headerCategoriesContainer.appendChild(categoriesPopup(obj));
@@ -31,9 +40,9 @@ function header(obj) {
 
   headerBasketIcon.addEventListener('click', () => {
     document.body.appendChild(createBasketPopup(obj));
-    console.log(obj)
   })
   return header
+
 }
 
 function createSelectedCategoryProductsContainer() {
