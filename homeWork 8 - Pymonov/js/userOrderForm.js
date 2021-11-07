@@ -81,7 +81,7 @@ function createUserForm(obj) {
   
   submitBtn.addEventListener('click', () => {
     obj.orderComment = orderComments.value;
-    if (document.forms[0].elements[0].value && document.forms[0].elements[1].value !== 0 && document.forms[0].elements[2].value && document.forms[0].elements.payType.value && document.forms[0].elements[5]) {
+    if (document.forms[0].elements[0].value && document.forms[0].elements[1].value !== 0 && document.forms[0].elements[2].value && document.forms[0].elements.payType.value && document.forms[0].elements[5].value) {
       isOk = true;
       finalFormContent.innerText = 'Congratulations! All data of your order was sent to our manager, please await for callback!';
       let accept = finalCloseBtn();
