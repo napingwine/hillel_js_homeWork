@@ -1,6 +1,6 @@
 'use strict';
 
-function createPopup(obj) {
+function Popup(obj) {
   let productObject = getProductFromSelectedCategory(obj);
   obj.currentProductObject = productObject;
 
@@ -81,8 +81,8 @@ function createPopup(obj) {
     let someProduct = new ProductAndAmountToBasket(obj, userProductAmount.value);
     if(userProductAmount.value > 0){
       obj.basketArrayOfProducts.push(someProduct);
-      let basetProductst = JSON.stringify(obj.basketArrayOfProducts)
-      localStorage.setItem('basket', basetProductst);
+      let basetProducts = JSON.stringify(obj.basketArrayOfProducts)
+      localStorage.setItem('basket', basetProducts);
     }
     popup.remove();
   });

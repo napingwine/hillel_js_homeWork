@@ -83,7 +83,7 @@ function createUserForm(obj) {
     obj.orderComment = orderComments.value;
     if (document.forms[0].elements[0].value && document.forms[0].elements[1].value !== 0 && document.forms[0].elements[2].value && document.forms[0].elements.payType.value && document.forms[0].elements[5]) {
       isOk = true;
-      finalFormContent.innerText = 'Congratulations! All data of your order was send to our manadger, please await for callback!';
+      finalFormContent.innerText = 'Congratulations! All data of your order was sent to our manager, please await for callback!';
       let accept = finalCloseBtn();
       finalFormContent.appendChild(accept);
 
@@ -92,13 +92,13 @@ function createUserForm(obj) {
         localStorage.setItem('basket', '');
       });
 
-      let orderHistory = JSON.parse(localStorage.getItem('orderHistory'));
-      let newOrder = new CreateOrderForCabinet(obj);
+      let orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+      let newOrder = new OrderForCabinet(obj);
       orderHistory.push(newOrder);
       localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
     } else {
       isOk = false;
-      finalFormContent.appendChild(emtyFormWarning());
+      finalFormContent.appendChild(emptyFormWarning());
     }
   });
 
@@ -123,7 +123,7 @@ function createSelectForInput(nameOfSelect, arr) {
   return select;
 }
 
-function emtyFormWarning() {
+function emptyFormWarning() {
   let div = document.createElement('div');
   div.innerText = 'Please fill up all fields!';
   div.className = 'emty-form-warning';
@@ -143,7 +143,7 @@ function finalCloseBtn() {
   return btn;
 }
 
-function CreateOrderForCabinet(obj) {
+function OrderForCabinet(obj) {
   this.orderList = obj.basketArrayOfProducts;
   this.time = new Date();
   this.comment = obj.orderComment;

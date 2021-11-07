@@ -31,18 +31,18 @@ function createProductCardsInContainer(obj) {
 
     div.addEventListener('click', (e) => {
       obj.idOfSelectedElement = e.srcElement.attributes.idofproduct.value;
-      document.body.appendChild(createPopup(obj));
+      document.body.appendChild(Popup(obj));
     })
     productsContainer.appendChild(div);
   }
   return productsContainer;
 }
 
-function createDiv(productsArray, classname, innnerhtml, property, iterator) {
+function createDiv(productsArray, nameOfClass, text, property, iterator) {
   let div1 = document.createElement('div');
-  div1.className = classname;
+  div1.className = nameOfClass;
   let strongDiv1 = document.createElement('strong');
-  strongDiv1.innerHTML = innnerhtml;
+  strongDiv1.innerHTML = text;
   div1.appendChild(strongDiv1);
   let div11 = document.createElement('div');
   let id = "count" + productsArray[iterator].id;

@@ -15,6 +15,7 @@ input::-webkit-inner-spin-button {
   max-width: 1440px;
 }
 
+
 .header__wrapper {
   background: lightgray;
   display: flex;
@@ -91,6 +92,7 @@ input::-webkit-inner-spin-button {
 
 .header__categories {
   position: relative;
+  font-size: 30px;
 }
 
 #categories-popup {
@@ -229,4 +231,14 @@ input::-webkit-inner-spin-button {
   grid-template-columns: 1fr 1fr 1fr;
   border: 1px solid black;
   background: lightgray;
+}
+
+#user-cabinet-icon,
+#header-basket-icon {
+  font-size: 40px;
+}
+
+.empty-basket-Warning {
+  font-size: 30px;
+  color: red;
 }

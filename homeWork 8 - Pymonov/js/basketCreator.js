@@ -38,10 +38,10 @@ function createBasketPopup(obj) {
   totalWithDiscount.style.display = 'none';
   basketPositions.appendChild(totalWithDiscount);
   
-
   if(isDiscount(obj)){
     totalWithDiscount.style.display = 'flex';
   }
+
   //btn container
   let btnContainer = document.createElement('div');
   btnContainer.className = 'basket__btn-container';
@@ -65,8 +65,8 @@ function createBasketPopup(obj) {
     if(obj.basketArrayOfProducts.length !== 0){
       document.body.appendChild(createUserForm(obj));
     }else{
-      if(document.querySelector('.emty-basket-Warning')){
-        document.querySelector('.emty-basket-Warning').remove();
+      if(document.querySelector('.empty-basket-Warning')){
+        document.querySelector('.empty-basket-Warning').remove();
       }
       basketContent.appendChild(askUseraddSomthingFromShop());
     }
@@ -74,10 +74,11 @@ function createBasketPopup(obj) {
 
   basketContent.addEventListener('click', e => {
     if(e.target.className === 'remove-item'){
-      obj.totalPriceOfBill = total.lastChild.innerText - e.target.parentNode.childNodes[3].innerHTML;
-      total.lastChild.innerText = total.lastChild.innerText - e.target.parentNode.childNodes[3].innerHTML;
-      totalWithDiscount.lastChild.innerText = obj.totalPriceOfBill - (obj.totalPriceOfBill * (obj.discount/100));
-      obj.totalPriceOfBillWithDiscount = totalWithDiscount.lastChild.innerText;
+      let currentElementTotalPrice = e.target.parentNode.getAttribute('data-totalPrice');
+      obj.totalPriceOfBill = obj.totalPriceOfBill - currentElementTotalPrice;
+      total.lastChild.innerText = obj.totalPriceOfBill;
+      obj.totalPriceOfBillWithDiscount = obj.totalPriceOfBill - (obj.totalPriceOfBill * (obj.discount/100));
+      totalWithDiscount.lastChild.innerText = obj.totalPriceOfBillWithDiscount;
     }
     if(!isDiscount(obj)){
       totalWithDiscount.style.display = 'none';
@@ -117,6 +118,7 @@ function createPositionWithBTN(obj, indexOfProduct) {
   let orderAmount = obj.basketArrayOfProducts[indexOfProduct].amount;
   let totalPrice = obj.basketArrayOfProducts[indexOfProduct].product.price * obj.basketArrayOfProducts[indexOfProduct].amount;
   let position = createPosition(itemName, price, orderAmount, totalPrice);
+  position.setAttribute('data-totalPrice', totalPrice)
   let delBtn = createDelBTN();
   delBtn.className = 'remove-item';
   position.appendChild(delBtn);
@@ -127,9 +129,9 @@ function createPositionWithBTN(obj, indexOfProduct) {
         obj.basketArrayOfProducts.splice(z, 1);
       }
     }
-    let basetProductst = JSON.stringify(obj.basketArrayOfProducts);
-    localStorage.setItem('basket', basetProductst);
-    position.remove(); // remove HTML element from baksket
+    let basetProducts = JSON.stringify(obj.basketArrayOfProducts);
+    localStorage.setItem('basket', basetProducts);
+    position.remove();
   })
   obj.totalPriceOfBill += totalPrice;
   return position;
@@ -143,9 +145,7 @@ function isDiscount(obj){
 
 function askUseraddSomthingFromShop(){
   let div = document.createElement('div');
+  div.className = 'empty-basket-Warning';
   div.innerHTML = 'Your basket is empty!';
-  div.style.fontSize = "30px";
-  div.className = 'emty-basket-Warning';
-  div.style.color = 'red';
   return div;
 }

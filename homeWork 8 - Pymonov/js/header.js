@@ -2,7 +2,6 @@
 function header(obj) {
   let header = document.createElement('header');
   header.className = 'container';
-  header.style.fontSize = '30px';
 
   let headerWrapper = document.createElement('div');
   headerWrapper.className = 'header__wrapper';
@@ -17,7 +16,6 @@ function header(obj) {
   let userCabinet = document.createElement('div');
   userCabinet.id = 'user-cabinet-icon';
   userCabinet.className = 'fas fa-user';
-  userCabinet.fontSize = '40px';
   headerWrapper.appendChild(userCabinet);
   userCabinet.addEventListener('click', ()=>{
     openUserCabinet(obj);
@@ -26,7 +24,6 @@ function header(obj) {
   let headerBasketIcon = document.createElement('div');
   headerBasketIcon.id = 'header-basket-icon';
   headerBasketIcon.className = 'fas fa-shopping-cart';
-  headerBasketIcon.fontSize = '40px'
   headerWrapper.appendChild(headerBasketIcon)
   
   //show pop up with categories on mouse enter

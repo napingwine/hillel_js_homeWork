@@ -1,11 +1,11 @@
 function openUserCabinet(obj) {
-  let shopingHistoryContaner = document.querySelector('.result-products-container');
-  let shopingHistory = JSON.parse(localStorage.getItem('orderHistory'));
-  shopingHistoryContaner.innerHTML = '';
-  shopingHistoryContaner.appendChild(createTebleHeader());
+  let shoppingHistoryContaner = document.querySelector('.result-products-container');
+  let shoppingHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+  shoppingHistoryContaner.innerHTML = '';
+  shoppingHistoryContaner.appendChild(createTableHeader());
 
-  for (let i = 0; i < shopingHistory.length; i++) {
-    shopingHistoryContaner.appendChild(historyOrderElement(shopingHistory[i], i));
+  for (let i = 0; i < shoppingHistory.length; i++) {
+    shoppingHistoryContaner.appendChild(historyOrderElement(shoppingHistory[i], i));
   }
 }
 
@@ -49,7 +49,7 @@ function historyOrderElement(order, numberOfOrder) {
   return div;
 }
 
-function createTebleHeader() {
+function createTableHeader() {
   let div = document.createElement('div');
   div.className = 'history-order-element';
 
