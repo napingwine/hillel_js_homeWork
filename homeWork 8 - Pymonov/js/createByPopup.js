@@ -1,6 +1,6 @@
 'use strict';
 
-function Popup(obj) {
+function createPopup(obj) {
   let productObject = getProductFromSelectedCategory(obj);
   obj.currentProductObject = productObject;
 

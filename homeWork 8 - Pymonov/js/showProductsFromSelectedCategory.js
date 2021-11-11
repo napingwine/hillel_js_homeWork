@@ -31,7 +31,7 @@ function createProductCardsInContainer(obj) {
 
     div.addEventListener('click', (e) => {
       obj.idOfSelectedElement = e.srcElement.attributes.idofproduct.value;
-      document.body.appendChild(Popup(obj));
+      document.body.appendChild(createPopup(obj));
     })
     productsContainer.appendChild(div);
   }
