@@ -1,0 +1,96 @@
+.row {
+  display: flex;
+}
+
+.row div {
+  padding: 10px;
+  border: 1px black solid;
+}
+
+.userBtn {
+  width: 75px;
+  background: lightgray;
+  text-align: center;
+}
+
+.user-name {
+  width: 100px;
+  overflow: hidden;
+}
+
+.userBtn:hover {
+  cursor: pointer;
+  background-color: lightslategray;
+  transition: all ease-in-out 0.3s;
+  border-radius: 3px;
+  transform: scale(1.1);
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.popup__body {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 10px;
+}
+
+.popup__content {
+  background: #fff;
+  max-width: 800px;
+  padding: 30px;
+  position: relative;
+}
+
+.popup__close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.popup__title {
+  font-size: 25px;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.btn-container {
+  display: flex;
+}
+
+.btn-container .userBtn {
+  padding: 5px;
+  margin: 10px;
+}
+
+.readOnlyInput {
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.readOnlyInput:focus-visible{
+  outline: none;
+  cursor: auto;
+}
+
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-container label {
+  padding: 10px;
+}
