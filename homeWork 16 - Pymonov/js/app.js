@@ -1,11 +1,17 @@
 'use strict'
 
-class customHTML{
-  constructor(tagName, obj) {
+class customHTML {
+  constructor(tagName = 'div', obj) {
     this.div = document.createElement(tagName);
-    this.div.setAttribute(obj.attributeName, obj.attributeValue);
-    this.div.classList.add(obj.className);
-    this.div.innerText = obj.elementText;
+    if(obj.attributeName && obj.attributeValue){
+      this.div.setAttribute(obj.attributeName, obj.attributeValue);
+    }
+    if(obj.className){
+      this.div.classList.add(obj.className);
+    }
+    if(obj.elementText){
+      this.div.innerText = obj.elementText;
+    }
   }
   render(selector){
     this.element = document.querySelector(selector);
