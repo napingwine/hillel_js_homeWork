@@ -1,6 +1,5 @@
 'use strict';
 
-
 function User(uName, password, age, email, phoneNumber, bankCard){
   this.userId = uName + phoneNumber;
   this.uName = uName;

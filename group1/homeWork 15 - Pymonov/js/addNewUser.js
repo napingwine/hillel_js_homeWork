@@ -1,5 +1,6 @@
 let addBtn = document.querySelector('#addNewUser');
 
 addBtn.addEventListener('click', () => {
-  document.body.appendChild(createUserPagePopUp('', true))
+  let newUser = new User;
+  document.body.appendChild(createUserPagePopUp(newUser, 'newUser'));
 })
