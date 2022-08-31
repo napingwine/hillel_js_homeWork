@@ -53,3 +53,12 @@ body {
   max-height: 200px;
   max-width: 200px;
 }
+
+h1 {
+  font-size: 200px;
+}
+
+.error {
+  width: 100%;
+  text-align: center;
+}

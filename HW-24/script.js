@@ -26,16 +26,28 @@ const renderUserData = (avatar_url, public_repos, followers, following, sectionF
   sectionForRender.append(info);
 };
 
+const errorPage = async (data, resultSection) => {
+  const response = await data.json();
+  const error = document.createElement('div');
+  error.classList.add('error');
+  const errorCode = document.createElement('h1');
+  errorCode.innerText = `${data.status}`;
+  error.append(errorCode);
+  const errorText = document.createElement('p');
+  errorText.innerText = response.message;
+  error.append(errorText);
+
+  resultSection.append(error);
+};
+
 const findUser = async (userName, sectionForRender) => {
   sectionForRender.innerHTML = '';
-  try {
-    const data = await fetch(`https://api.github.com/users/${userName}`);
-    throw new Error('error')
-    const userData = await data.json(); 
-    const { avatar_url, public_repos, followers, following } = userData;
-    await renderUserData(avatar_url, public_repos, followers, following, sectionForRender);
-  } catch (e) {
-    console.log(e);
+  const data = await fetch(`https://api.github.com/users/${userName}`);
+  if (data.ok) {
+    const { avatar_url, public_repos, followers, following } = await data.json();
+    renderUserData(avatar_url, public_repos, followers, following, sectionForRender);
+  } else {
+    errorPage(data, resultSection);
   }
 };
 
